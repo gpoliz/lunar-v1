@@ -41,15 +41,14 @@ export default defineConfig({
       VERSION: JSON.stringify(version),
       LAST_UPDATED: JSON.stringify(getLastUpdated()),
     },
-    plugins: [
-      viteStaticCopy({
-        targets: [
-          {
-            src: normalizePath(`${libcurlPath}/**/*.mjs`),
-            dest: 'assets/packaged/ep',
-            overwrite: false,
-          },
-          {
+   plugins: [
+  ...viteStaticCopy({
+    targets: [
+      { src: 'public/*', dest: '' }
+    ]
+  })
+],
+
             src: normalizePath(`${baremuxPath}/**/*.js`),
             dest: 'assets/packaged/bm',
             overwrite: false,
